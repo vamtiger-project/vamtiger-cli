@@ -1,0 +1,13 @@
+:root
+{
+    --custom-property-html:
+    {
+        color: blue;
+    }
+
+    --custom-properties-for-body:
+    {
+        color: red;
+        background-color: orange;
+    }
+}

@@ -1,0 +1,18 @@
+[
+    "vamtiger.get.readStream",
+    "vamtiger.get.fileData",
+    "vamtiger.get.customElement",
+    "vamtiger.get.writeStream",
+    "vamtiger.get.customElementBoilerplate",
+    "vamtiger.get.pollyiflledCustomElementBoilerplate",
+    "vamtiger.create.customElement",
+    "vamtiger.bundle.js",
+    "vamtiger.bundle.transpiledJs",
+    "vamtiger.bundle.legacyJs",
+    "vamtiger.bundle.css",
+    "vamtiger.bundle.ui",
+    "vamtiger.bundle.uiHtml",
+    "vamtiger.bundle.uiCss",
+    "vamtiger.bundle.prefixedUiCss",
+    "vamtiger.initialize.uiSource"
+]

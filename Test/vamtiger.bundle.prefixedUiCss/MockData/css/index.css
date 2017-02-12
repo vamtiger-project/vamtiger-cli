@@ -1,0 +1,14 @@
+@import "custom-property/index.css";
+
+#vamtiger-custom-element,
+    article,
+    article #some-other-element
+{
+    margin: 0;
+    padding: 0;
+}
+
+#vamtiger-custom-element
+{
+    @apply --some-awesome-ui-styling;
+}

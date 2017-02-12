@@ -1,0 +1,11 @@
+@import "Module/custom-property/index.css";
+@import "Module/custom-selector/index.css";
+
+html {
+    @apply --custom-property-html;
+}
+
+:--body-selector
+{
+    @apply --custom-properties-for-body;
+}

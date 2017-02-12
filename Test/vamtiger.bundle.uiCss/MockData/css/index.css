@@ -1,0 +1,6 @@
+@import "custom-property/index.css";
+
+#some-awesome-ui
+{
+    @apply --some-awesome-ui-styling;
+}

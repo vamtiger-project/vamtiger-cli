@@ -1,0 +1,16 @@
+'use strict';
+
+function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+    }
+}
+
+var Module = function Module() {
+    _classCallCheck(this, Module);
+
+    this.name = 'ES2015 Module';
+};
+
+testInstance = new Module();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjpudWxsLCJzb3VyY2VzIjpbIi9Vc2Vycy92YW10aWdlci9Eb2N1bWVudHMvUHJvZ3JhbW1pbmcvVmFtdGlnZXJQcm9qZWN0L3ZhbXRpZ2VyLWNsaS9UZXN0L3ZhbXRpZ2VyLmJ1bmRsZS5sZWdhY3lKcy9Nb2NrRGF0YS9Nb2R1bGUvaW5kZXguanMiLCIvVXNlcnMvdmFtdGlnZXIvRG9jdW1lbnRzL1Byb2dyYW1taW5nL1ZhbXRpZ2VyUHJvamVjdC92YW10aWdlci1jbGkvVGVzdC92YW10aWdlci5idW5kbGUubGVnYWN5SnMvTW9ja0RhdGEvaW5kZXguanMiXSwic291cmNlc0NvbnRlbnQiOlsiJ3VzZSBzdHJpY3QnO1xuXG5jbGFzcyBNb2R1bGUge1xuICAgIGNvbnN0cnVjdG9yKCkge1xuICAgICAgICB0aGlzLm5hbWUgPSAnRVMyMDE1IE1vZHVsZSc7XG4gICAgfVxufVxuXG5leHBvcnQgZGVmYXVsdCBNb2R1bGU7IiwiJ3VzZSBzdHJpY3QnO1xuXG5pbXBvcnQgVGVzdCBmcm9tICcuL01vZHVsZS9pbmRleC5qcyc7XG5cbnRlc3RJbnN0YW5jZSA9IG5ldyBUZXN0KCk7Il0sIm5hbWVzIjpbIlRlc3QiXSwibWFwcGluZ3MiOiI7Ozs7SUFFTSxBQUFNLEFBQUMsU0FDVCxBQUFXO0FBQUc7O0FBQ1YsQUFBSSxTQUFDLEFBQUksT0FBRyxBQUFlLEFBQUM7QUFDL0IsQUFDSixBQUVEOztBQ0pBLEFBQVksZUFBRyxJQUFJLEFBQUksQUFBRSJ9
