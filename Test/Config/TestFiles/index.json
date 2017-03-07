@@ -14,5 +14,6 @@
     "vamtiger.bundle.uiHtml",
     "vamtiger.bundle.uiCss",
     "vamtiger.bundle.prefixedUiCss",
-    "vamtiger.initialize.uiSource"
+    "vamtiger.bundle.uiOnly",
+    "vamtiger.initialize.uiProject"
 ]

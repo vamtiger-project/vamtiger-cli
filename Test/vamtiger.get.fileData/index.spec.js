@@ -24,7 +24,7 @@ describe(`vamtiger.get.fileData should`, function () {
             expected = /^The text in a file$/i;
 
         vamtiger.get.fileData(filePath)
-            .then(fileData => expect(fileData.fileText).to.match(expected))
+            .then(file => expect(file.fileData).to.match(expected))
             .then(() => done())
             .catch(done);
     });

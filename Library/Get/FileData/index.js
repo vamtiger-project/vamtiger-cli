@@ -4,21 +4,22 @@ const fs = require('fs'),
     path = require('path');
 
 class FileData {
-    constructor(filePath) {
+    constructor([filePath, asBuffer]) {
         this.filePath = filePath;
         this.fileType = path.extname(this.filePath).replace(/\W/g, '');
-        this.encoding = 'utf-8';
-        this.fileText = null;
+        this.encoding = asBuffer ? null : 'utf-8';
+        this.fileData = null;
+        this.asBuffer = asBuffer;
     }
     
     main() {
         return new Promise((resolve, reject) => {
-            fs.readFile(this.filePath, this.encoding, (error, fileText) => {
+            fs.readFile(this.filePath, this.encoding, (error, fileData) => {
                 if (error)
                     reject(error);
                 else {
-                    this.fileText = fileText;
-
+                    this.fileData = fileData;
+                    
                     resolve(this);
                 }
             })
@@ -26,4 +27,4 @@ class FileData {
     }
 }
 
-module.exports = filePath => new FileData(filePath).main();
+module.exports = (...parameters) => new FileData(parameters).main();

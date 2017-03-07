@@ -19,6 +19,18 @@ class Get {
         return fileData;
     }
 
+    static get folderContent() {
+        const folderContent = require('./FolderContent');
+
+        return folderContent;
+    }
+
+    static get pathInfo() {
+        const pathInfo = require('./PathInfo');
+
+        return pathInfo;
+    }
+
     static get customElement() {
         const customElement = require('./CustomElement');
 
@@ -83,6 +95,12 @@ class Get {
         const prefixedSelectorCss = require('./PrefixedSelectorCss');
 
         return prefixedSelectorCss;
+    }
+
+    static get regex() {
+        const regex = require('./Regex');
+
+        return regex;
     }
 }
 

@@ -1,10 +1,10 @@
 'use strict';
 
 class Initialize {
-    static get uiSource() {
-        const uiSource = require('./UiSource');
+    static get uiProject() {
+        const uiProject = require('./UiProject');
 
-        return uiSource;
+        return uiProject;
     }
 }
 

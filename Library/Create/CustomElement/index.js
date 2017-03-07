@@ -90,7 +90,7 @@ class CustomElement extends Vamtiger {
     setFileData(fileData) {
         fileData.forEach(data => {
             if (this.hasOwnProperty(data.fileType)) {
-                this[data.fileType] = this[data.fileType] ? this[data.fileType] + data.fileText : data.fileText;
+                this[data.fileType] = this[data.fileType] ? this[data.fileType] + data.fileData : data.fileData;
             }
         });
 

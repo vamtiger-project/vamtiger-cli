@@ -6,6 +6,12 @@ class Create {
 
         return customElement;
     }
+
+    static get folder() {
+        const folder = require('./Folder');
+
+        return folder;
+    }
 }
 
 module.exports = Create;

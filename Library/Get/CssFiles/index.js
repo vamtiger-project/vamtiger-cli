@@ -7,11 +7,13 @@ const path = require('path'),
     Vamtiger = require(VamtigerPath);
 
 class CssFiles extends Vamtiger {
-    constructor({filePath, buffer}) {
+    constructor({filePath, buffer, includeAll}) {
         super();
         
         this.basePath = path.dirname(filePath);
         this._buffer = buffer;
+
+        this.includeAll = includeAll;
 
         this.cssFiles = new Set();
     }
@@ -42,7 +44,7 @@ class CssFiles extends Vamtiger {
             href;
 
         XRegExp.forEach(this.html, this.regex.styleSheet, match => {
-            addStyleSheetUrl = !XRegExp.exec(match.styleSheet, this.regex.ignoreElement);
+            addStyleSheetUrl = this.includeAll ? true : !XRegExp.exec(match.styleSheet, this.regex.ignoreElement);
 
             if (addStyleSheetUrl) {
                 href = XRegExp.exec(match.styleSheet, this.regex.href)

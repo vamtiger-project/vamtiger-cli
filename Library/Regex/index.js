@@ -72,6 +72,12 @@ class Regex {
 
         return regex;
     }
+
+    static get error() {
+        const regex = require('./Error');
+
+        return regex;
+    }
 };
 
 module.exports = Regex;

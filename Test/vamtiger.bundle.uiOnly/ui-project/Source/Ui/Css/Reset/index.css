@@ -1,0 +1,13 @@
+/**
+ * CSS Reset Start
+ **/
+@import "../Selector/index.css";
+@import "../Layout/index.css";
+
+:--document-selector
+{
+    @apply --no-margin-and-padding;
+}
+/**
+ * CSS Reset Start
+ **/

@@ -25,10 +25,22 @@ class Bundle {
         return css;
     }
 
+    static get cssFile() {
+        const cssFile = require('./CssFile');
+
+        return cssFile;
+    }
+
     static get ui() {
         const ui = require('./Ui').main;
 
         return ui;
+    }
+
+    static get uiOnly() {
+        const uiOnly = require('./UiOnly').main;
+
+        return uiOnly;
     }
 
     static get uiHtml() {

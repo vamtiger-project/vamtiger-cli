@@ -8,11 +8,13 @@
 			"name": "Unit Test",
             "request": "launch",
 			"type": "node",
-			"program": "${workspaceRoot}/Test/index.js",
+            "runtimeExecutable": "/Users/vamtiger/.nvm/v7.5.0/bin/node",
+            "runtimeArgs": [
+                "--harmony-async-await",
+                "${workspaceRoot}/Test/index.js"
+            ],
 			"stopOnEntry": false,
-			"cwd": "${workspaceRoot}",
-			"runtimeExecutable": null,
-			"env": { }
+			"cwd": "${workspaceRoot}"
 		}
     ]
 }
