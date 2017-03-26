@@ -55,10 +55,40 @@ class Bundle {
         return uiCss;
     }
 
+    static get uiIgnoreCss() {
+        const uiIgnoreCss = require('./UiIgnoreCss').main;
+
+        return uiIgnoreCss;
+    }
+
     static get prefixedUiCss() {
         const prefixedUiCss = require('./PrefixedUiCss').main;
 
         return prefixedUiCss;
+    }
+
+    static get component() {
+        const component = require('./Component');
+
+        return component;
+    }
+
+    static get componentPreview() {
+        const componentPreview = require('./ComponentPreview');
+
+        return componentPreview;
+    }
+
+    static get componentPreviewHtml() {
+        const bundleComponentPreviewHtml = require('./ComponentPreviewHtml');
+
+        return bundleComponentPreviewHtml;
+    }
+
+    static get componentPreviewCss() {
+        const componentPreviewCss = require('./ComponentPreviewCss');
+
+        return componentPreviewCss;
     }
 }
 

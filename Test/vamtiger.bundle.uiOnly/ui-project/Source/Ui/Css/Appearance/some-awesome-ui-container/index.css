@@ -1,0 +1,17 @@
+/**
+ * Appearance Start: some-awesome-ui-container
+ **/
+:root
+{
+    --some-awesome-ui-container: {
+        background-color: orange;
+    }
+}
+
+.some-awesome-ui-container
+{
+    @apply --some-awesome-ui-container;
+}
+/**
+ * Appearance End: some-awesome-ui-container
+ **/

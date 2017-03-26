@@ -61,16 +61,22 @@ class Get {
         return cssBundles;
     }
 
-    static get bodyInnerHtml() {
-        const bodyInnerHtml = require('./BodyInnerHtml');
+    static get bodyHtml() {
+        const bodyHtml = require('./BodyHtml');
 
-        return bodyInnerHtml;
+        return bodyHtml;
     }
 
     static get cssFiles() {
         const cssFiles = require('./CssFiles');
 
         return cssFiles;
+    }
+
+    static get ignoreCss() {
+        const ignoreCss = require('./IgnoreCss');
+
+        return ignoreCss;
     }
 
     static get customElementBoilerplate() {
@@ -101,6 +107,30 @@ class Get {
         const regex = require('./Regex');
 
         return regex;
+    }
+
+    static get customElementHtml() {
+        const customElementHtml = require('./CustomElementHtml');
+
+        return customElementHtml;
+    }
+
+    static get lowercaseDashed() {
+        const lowercaseDashed = require('./LowercaseDashed');
+
+        return lowercaseDashed;
+    }
+
+    static get customElementName() {
+        const customElementName = require('./CustomElementName');
+
+        return customElementName;
+    }
+
+    static get componentName() {
+        const componentName = require('./ComponentName');
+
+        return componentName;
     }
 }
 

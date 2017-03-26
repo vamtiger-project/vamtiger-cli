@@ -10,7 +10,7 @@ class BundleUi extends TranspiledJs {
 
         this.filePath = filePath;
         
-        this.bodyInnerHtml = null;
+        this.bodyHtml = null;
         this.cssBundle = null;
     }
 
@@ -21,8 +21,8 @@ class BundleUi extends TranspiledJs {
     _transform(buffer, encoding, done) {
         this.buffer = buffer;
         
-        this.get.bodyInnerHtml(this)
-            .then(bodyInnerHtml => this.bodyInnerHtml = bodyInnerHtml)
+        this.get.bodyHtml(this)
+            .then(bodyInnerHtml => this.bodyHtml = bodyInnerHtml)
             .then(() => this.get.cssFiles(this))
             .then(cssFiles => this.cssFiles = cssFiles)
             .then(() => this.get.cssBundles(this.cssFiles))
@@ -55,7 +55,7 @@ class BundleUi extends TranspiledJs {
         const ui = `
             'use strict';
 
-            const html = \`${this.bodyInnerHtml}\`,
+            const html = \`${this.bodyHtml}\`,
                 css = \`${this.css}\`;
 
             export default {html, css};

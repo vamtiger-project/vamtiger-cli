@@ -48,6 +48,18 @@ class JsBundle {
         
         return sourceMap;
     }
+
+    get sourceMapUrl() {
+        const sourceMapUrl = `//# sourceMappingURL=${this.sourceMap.toUrl()}`;
+
+        return sourceMapUrl;
+    }
+
+    get codeWithSourceMap() {
+        const codeWithSourceMap = this.code + this.sourceMapUrl;
+
+        return codeWithSourceMap;
+    }
 }
 
 module.exports = fileData => new JsBundle(fileData).main();

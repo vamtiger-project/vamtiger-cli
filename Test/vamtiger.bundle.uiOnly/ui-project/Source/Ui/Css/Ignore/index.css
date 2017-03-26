@@ -2,11 +2,13 @@
  * CSS Ignore Start
  **/
 @import "../Selector/index.css";
+@import "../Layout/full-width-and-height/index.css";
+@import "../Layout/no-margin-and-padding/index.css";
 
 :--document-selector
 {
-    width: 100%;
-    height: 100%;
+    @apply --no-margin-and-padding;
+    @apply --full-width-and-height;
 }
 /**
  * CSS Ignore End

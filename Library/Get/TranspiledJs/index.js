@@ -61,12 +61,10 @@ class TranspiledJs {
     }
 
     get sourceMap() {
-        let sourceMap = '';
+        const sourceMap = this.transpiledJs.map.toUrl(),
+            sourceMapUrl = sourceMap ? `//# sourceMappingURL=${sourceMap}` : '';
 
-        if (this.transpiledJs.map)
-            sourceMap = `//# sourceMappingURL=${this.transpiledJs.map.toUrl()}`;
-        
-        return sourceMap;
+        return sourceMapUrl;
     } 
 }
 

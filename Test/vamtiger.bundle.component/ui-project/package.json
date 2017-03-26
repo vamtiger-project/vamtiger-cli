@@ -1,0 +1,22 @@
+{
+  "name": "name-of-ui-project",
+  "version": "0.0.0",
+  "description": "Description for UI project.",
+  "author": "James-Alex Matthews IV",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --harmony-async-await Test"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-util": "^3.0.7",
+    "mocha": "^3.2.0",
+    "vamtiger-cli": "^0.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  }
+}

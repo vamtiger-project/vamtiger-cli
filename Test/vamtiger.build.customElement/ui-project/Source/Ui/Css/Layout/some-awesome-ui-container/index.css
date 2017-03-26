@@ -1,0 +1,8 @@
+@import "../no-margin-and-padding/index.css";
+@import "../full-width-and-height/index.css";
+
+.some-awesome-ui-container
+{
+    @apply --full-width-and-height;
+    @apply --no-margin-and-padding;
+}

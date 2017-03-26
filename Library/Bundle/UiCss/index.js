@@ -9,8 +9,6 @@ class BundleUiCss extends BundleUi {
         super(filePath);
 
         this.filePath = filePath;
-        
-        this.bodyInnerHtml = null;
         this.cssBundle = null;
     }
 

@@ -12,12 +12,9 @@ class BundlePrefixedUiCss extends UiCss {
     }
 
     get prefix() {
-        const match = XRegExp.exec(this.bodyInnerHtml, this.regex.elementId);
-
-        let prefix;
-
-        if (match)
-            prefix = match.elementId;
+        const prefix = this.get.customElementName({
+            html: this.buffer
+        });
 
         return prefix;
     }
@@ -25,9 +22,7 @@ class BundlePrefixedUiCss extends UiCss {
     get css() {
         const prefixedSelectorCss = this.get.prefixedSelectorCss(this),
             css = `
-                <style>
                     ${prefixedSelectorCss}
-                </style>
             `;
 
         return css;

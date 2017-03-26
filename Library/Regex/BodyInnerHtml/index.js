@@ -14,14 +14,16 @@ class BodyInnerHtml {
 
     static get pattern() {
         const pattern = `
-            <body>
-                \\s*
-                (?<bodyInnerHtml>
-                    .*
-                    \\S
-                )
-                \\s*
-            <\/body>
+            (?<bodyOutterHtml>
+                <body.*?>
+                    \\s*
+                    (?<bodyInnerHtml>
+                        .*
+                        \\S
+                    )
+                    \\s*
+                <\/body>
+            )
         `;
 
         return pattern;

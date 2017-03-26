@@ -10,7 +10,8 @@ class BundleUiHtml extends BundleUi {
 
         this.filePath = filePath;
         
-        this.bodyInnerHtml = null;
+        this.bodyHtml = null;
+        this.bodyInnerHtml = true;
     }
 
     _handleError(error) {
@@ -20,8 +21,8 @@ class BundleUiHtml extends BundleUi {
     _transform(buffer, encoding, done) {
         this.buffer = buffer;
         
-        this.get.bodyInnerHtml(this)
-            .then(bodyInnerHtml => this.bodyInnerHtml = bodyInnerHtml)
+        this.get.bodyHtml(this)
+            .then(bodyHtml => this.bodyHtml = bodyHtml)
             .then(() => this.ui = this._ui)
             .then(() => done())
             .catch(this._handleError);
@@ -31,7 +32,7 @@ class BundleUiHtml extends BundleUi {
         const ui = `
             'use strict';
 
-            const html = \`${this.bodyInnerHtml}\`;
+            const html = \`${this.bodyHtml}\`;
 
             export default html;
         `;

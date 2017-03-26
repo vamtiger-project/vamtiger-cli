@@ -1,0 +1,10 @@
+/**
+ * CSS Selector Start
+ **/
+@custom-selector :--document-selector
+    html,
+    body
+;
+/**
+ * CSS Selector End
+ **/

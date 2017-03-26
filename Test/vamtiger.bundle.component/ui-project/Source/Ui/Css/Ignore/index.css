@@ -1,0 +1,20 @@
+/**
+ * CSS Ignore Start
+ **/
+@import "../Selector/index.css";
+@import "../Layout/full-width-and-height/index.css";
+@import "../Layout/no-margin-and-padding/index.css";
+
+:--document-selector
+{
+    @apply --no-margin-and-padding;
+}
+
+:--document-selector,
+    #some-awesome-ui
+{
+    @apply --full-width-and-height;
+}
+/**
+ * CSS Ignore End
+ **/

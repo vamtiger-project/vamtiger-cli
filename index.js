@@ -19,6 +19,12 @@ class Vamtiger {
         return Create
     }
 
+    get build() {
+        const Build = require('./Library/Build');
+
+        return Build;
+    }
+
     get bundle() {
         const Bundle = require('./Library/Bundle');
 
@@ -53,6 +59,12 @@ class Vamtiger {
         const Question = require('./Library/Question');
 
         return Question;
+    }
+
+    get update() {
+        const Update = require('./Library/Update');
+
+        return Update;
     }
 }
 

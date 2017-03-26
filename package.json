@@ -16,6 +16,7 @@
     "mocha": "^3.2.0"
   },
   "dependencies": {
+    "@webcomponents/custom-elements": "https://github.com/webcomponents/custom-elements.git",
     "babel-core": "^6.21.0",
     "babel-plugin-transform-strict-mode": "^6.18.0",
     "babel-preset-2017": "^0.0.0",
@@ -23,7 +24,7 @@
     "babel-preset-es2016": "^6.16.0",
     "babel-preset-es2017": "^6.16.0",
     "cssnano": "^3.10.0",
-    "js-beautify": "^1.6.4",
+    "js-beautify": "^1.6.11",
     "jsdom": "^9.9.1",
     "postcss-cssnext": "^2.9.0",
     "postcss-import": "^9.1.0",

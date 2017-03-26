@@ -1,8 +1,10 @@
 'use strict';
 
-const html = `<section id="some-awesome-ui">
+const html = `<body>
+    <section id="some-awesome-ui">
         <article></article>
-    </section>`,
+    </section>
+</body>`,
     css = `
             <style>
                 #some-awesome-ui{width:100%;height:100%;background-color:orange}

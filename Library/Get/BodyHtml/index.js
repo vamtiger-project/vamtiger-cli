@@ -7,22 +7,23 @@ const path = require('path'),
     Vamtiger = require(VamtigerPath);
 
 class BodyInnerHtml extends Vamtiger {
-    constructor({buffer}) {
+    constructor({buffer, bodyInnerHtml}) {
         super();
         
         this._buffer = buffer;
+        this._bodyInnerHtml = bodyInnerHtml;
 
-        this.innerHtml = '';
+        this.html = '';
     }
     
     main() {
         return new Promise((resolve, reject) => {
-            const regexMatch = XRegExp.exec(this.documentHtml, this.regex.bodyInnerHtml);
+            const match = XRegExp.exec(this.documentHtml, this.regex.bodyInnerHtml);
         
-            if (regexMatch)
-                this.innerHtml = regexMatch.bodyInnerHtml.trim();
+            if (match)
+                this.html = this._bodyInnerHtml ? match.bodyInnerHtml.trim() : match.bodyOutterHtml;
 
-            resolve(this.innerHtml);
+            resolve(this.html);
         });
     }
 

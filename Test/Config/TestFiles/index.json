@@ -6,6 +6,7 @@
     "vamtiger.get.customElementBoilerplate",
     "vamtiger.get.pollyiflledCustomElementBoilerplate",
     "vamtiger.create.customElement",
+    "vamtiger.build.customElement",
     "vamtiger.bundle.js",
     "vamtiger.bundle.transpiledJs",
     "vamtiger.bundle.legacyJs",
@@ -15,5 +16,6 @@
     "vamtiger.bundle.uiCss",
     "vamtiger.bundle.prefixedUiCss",
     "vamtiger.bundle.uiOnly",
-    "vamtiger.initialize.uiProject"
+    "vamtiger.initialize.uiProject",
+    "vamtiger.bundle.component"
 ]

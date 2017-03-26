@@ -41,44 +41,35 @@ class FolderContent extends Vamtiger {
                 if (error)
                     done = () => reject(error);
                 else if (this.recursive) {
-                    // fs.readdir returns relative paths.
-                    // Recursively reading subfolders would require absolute paths
                     folderContent = folderContent.map(folder => path.resolve(absolutePath, folder));
 
                     done = () => resolve(folderContent);
-                } else
+                } else {
+                    this.folderContent = folderContent;
+                    
                     done = () => resolve(folderContent);
+                }
 
                 done();
             });
         });
     }
 
-    _recursivelyGetFolderContent(absolutePath, mainResolve, mainReject) {
-        return new Promise((resolve, reject) => {
-            if (!mainResolve) {
-                mainResolve = resolve;
-                mainReject = reject;
+    _recursivelyGetFolderContent(absolutePath) {
+        const recursivelyGetFolderContent = this._getFolderContent(absolutePath)
+            .then(folderContent => this._getFolderContentInfo(folderContent))
+            .then(folderContentInfo => this._getClassifiedFolderContent(folderContentInfo, absolutePath))
+            .then(classifiedFolderContent => this._referenceFolderFiles(classifiedFolderContent))
+            .then(classifiedFolderContent => this._getSubfolderContent(classifiedFolderContent))
+            .catch(this._handleError);
 
-                resolve.mainResolve = true;
-                reject.mainReject = true;
-            }
-
-            this._getFolderContent(absolutePath)
-                .then(folderContent => this._getFolderContentInfo(folderContent))
-                .then(folderContentInfo => this.getClassifiedFolderContent(folderContentInfo, absolutePath))
-                .then(classifiedFolderContent => this._referenceFolderFiles(classifiedFolderContent))
-                .then(classifiedFolderContent => this._getSubfolderContent(classifiedFolderContent, mainResolve, mainReject))
-                .then(() => resolve.mainResolve ? mainResolve() : resolve())
-                .catch(reject);
-        });
+        return recursivelyGetFolderContent;
     }
 
-    _getSubfolderContent(classifiedFolderContent, mainResolve, mainReject) {
-        const recursivelyGetFolderContent = classifiedFolderContent.folders
-                .map(folder => this._recursivelyGetFolderContent(folder, mainResolve, mainReject)),
-            getSubfolderContent = Promise
-                .all(recursivelyGetFolderContent);
+    _getSubfolderContent(classifiedFolderContent) {
+        const getSubfolderContent = Promise.all(
+                classifiedFolderContent.folders.map(folder => this._recursivelyGetFolderContent(folder))
+            );
 
         return getSubfolderContent;
     }
@@ -92,7 +83,7 @@ class FolderContent extends Vamtiger {
         return getFolderContentInfo;
     }
 
-    getClassifiedFolderContent(folderContentInfo, folderPath) {
+    _getClassifiedFolderContent(folderContentInfo, folderPath) {
         const classifiedFolderContent = {
                 path: null,
                 files: null,
