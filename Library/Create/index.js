@@ -12,6 +12,12 @@ class Create {
 
         return folder;
     }
+
+    static get pathFolders() {
+        const pathFolders = require('./PathFolders');
+
+        return pathFolders;
+    }
 }
 
 module.exports = Create;

@@ -132,6 +132,18 @@ class Get {
 
         return componentName;
     }
+
+    static get polyfillSourceFiles() {
+        const polyfillSourceFiles = require('./PolyfillSourceFiles');
+
+        return polyfillSourceFiles;
+    }
+
+    static get pathsWhichDontExist() {
+        const pathsWhichDontExist = require('./PathsWhichDontExist');
+
+        return pathsWhichDontExist;
+    }
 }
 
 module.exports = Get;

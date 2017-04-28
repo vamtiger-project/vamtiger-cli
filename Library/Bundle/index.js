@@ -90,6 +90,12 @@ class Bundle {
 
         return componentPreviewCss;
     }
+
+    static get uiLibrary() {
+        const uiLibrary = require('./UiLibrary');
+
+        return uiLibrary;
+    }
 }
 
 module.exports = Bundle;

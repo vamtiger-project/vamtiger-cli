@@ -155,6 +155,12 @@ class Regex {
 
         return regex;
     }
+
+    static get polyfillFolder() {
+        const regex = require('./PolyfillFolder');
+
+        return regex;
+    }
 };
 
 module.exports = Regex;

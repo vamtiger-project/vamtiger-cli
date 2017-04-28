@@ -20,6 +20,19 @@ class ErrorCode {
 
         return regex;
     }
+
+    static get EEXIST() {
+        const pattern = 'EEXIST',
+            flags = 'i',
+            explicit = true,
+            regex = vamtiger.get.regex({
+                pattern,
+                flags,
+                explicit
+            });
+
+        return regex;
+    }
 };
 
 module.exports = ErrorCode;

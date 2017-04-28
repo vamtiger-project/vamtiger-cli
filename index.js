@@ -66,6 +66,24 @@ class Vamtiger {
 
         return Update;
     }
+
+    get handle() {
+        const Handle = require('./Library/Handle');
+
+        return Handle;
+    }
+
+    get run() {
+        const Run = require('./Library/Run');
+
+        return Run;
+    }
+
+    get save() {
+        const Save = require('./Library/Save');
+
+        return Save;
+    }
 }
 
 module.exports = Vamtiger;
