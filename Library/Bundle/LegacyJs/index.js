@@ -3,8 +3,8 @@
 const TranspiledJs = require('../TranspiledJs').class;
 
 class BundleLegacyJs extends TranspiledJs {
-    constructor(filePath) {
-        super(filePath);
+    constructor({filePath}) {
+        super({filePath});
 
         this.legacy = true;
         this.transpile = true;

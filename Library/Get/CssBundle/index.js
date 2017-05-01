@@ -27,10 +27,6 @@ class CssBundle {
         });
     }
 
-    _handleError(error) {
-        throw error;
-    }
-
     get buffer() {
         let buffer = this._buffer;
         
@@ -82,6 +78,12 @@ class CssBundle {
 
         return process;
     }
+
+    _handleError(error) {
+        console.log(error);
+        
+        throw error;
+    }
 }
 
-module.exports = fileData => new CssBundle(fileData).main();
+module.exports = parameters => new CssBundle(parameters).main();

@@ -34,6 +34,7 @@
     "rollup-plugin-sourcemaps": "^0.4.1",
     "shady-css-parser": "^0.0.8",
     "through2": "^2.0.3",
+    "vamtiger-argv": "^1.2.0",
     "xregexp": "^3.2.0",
     "yarn": "^0.22.0"
   },

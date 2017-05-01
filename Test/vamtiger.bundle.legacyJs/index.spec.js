@@ -10,20 +10,20 @@ const path = require('path'),
     
     Vamtiger = require('../../'),
 
-    jsPath = path.resolve(__dirname, 'MockData/index.js');
+    filePath = path.resolve(__dirname, 'MockData/index.js');
 
 describe(`vamtiger.bundle.legacyJs should`, function () {
     it('bundle and transpile all javascript for a defined input path', function (done) {
         const vamtiger = new Vamtiger(),
             transpiledJsPath = path.resolve(
-                path.dirname(jsPath),
+                path.dirname(filePath),
                 'Transpiled',
                 'index.js'
             ),
             expected = /^ES2015 Module$/;
         
-        vamtiger.get.readStream(jsPath)
-            .pipe(vamtiger.bundle.legacyJs(jsPath))
+        vamtiger.get.readStream(filePath)
+            .pipe(vamtiger.bundle.legacyJs({filePath}))
             .pipe(vamtiger.get.writeStream(transpiledJsPath))
             .on('error', done)
             .on('finish', testResult);
@@ -48,13 +48,13 @@ describe(`vamtiger.bundle.legacyJs should`, function () {
         const vamtiger = new Vamtiger(),
             transpiledJsFileName = 'index-gulp.js',
             transpiledJsPath = path.resolve(
-                path.dirname(jsPath),
+                path.dirname(filePath),
                 'Transpiled'
             ),
             expected = /^ES2015 Module$/;
         
-        gulp.src(jsPath)
-            .pipe(vamtiger.bundle.legacyJs(jsPath))
+        gulp.src(filePath)
+            .pipe(vamtiger.bundle.legacyJs({filePath}))
             .pipe(rename(transpiledJsFileName))
             .pipe(gulp.dest(transpiledJsPath))
             .on('finish', testResult)

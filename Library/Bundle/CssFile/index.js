@@ -22,7 +22,7 @@ class CssFile {
     get bundleCssFile() {
         return new Promise((resolve, reject) => {
             vamtiger.get.readStream(this.source)
-                .pipe(vamtiger.bundle.css(this.source))
+                .pipe(vamtiger.bundle.css({filePath: this.source}))
                 .pipe(vamtiger.get.writeStream(this.destination))
                 .on('finish', resolve)
                 .on('error', reject);

@@ -26,7 +26,7 @@ class CssBundle {
                 destinationFile = vamtiger.get.writeStream(this.destination);
 
             sourceFile
-                .pipe(vamtiger.bundle.css(this.source))
+                .pipe(vamtiger.bundle.css({filePath: this.source}))
                 .pipe(destinationFile)
                 .on('finish', resolve)
                 .on('error', reject);

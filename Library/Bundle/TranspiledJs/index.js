@@ -8,7 +8,7 @@ const path = require('path'),
     Vamtiger = require(VamtigerPath);
 
 class BundleJs extends Vamtiger {
-    constructor(filePath) {
+    constructor({filePath}) {
         super();
         
         this.filePath = filePath;

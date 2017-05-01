@@ -8,9 +8,10 @@ const babel = require('babel-core'),
     formatJs = require('js-beautify').js_beautify;
 
 class TranspiledJs {
-    constructor({jsBundle, transpile}) {
-        this.jsBundle = jsBundle;
-        this.transpile = transpile;
+    constructor(paramaters) {
+        this.jsBundle = paramaters.jsBundle ? paramaters.jsBundle : paramaters._jsBundle;
+        this.transpile = paramaters.transpile;
+        this.codeOnly = paramaters.codeOnly;
 
         this.transpiledJs = null;
     }
@@ -61,8 +62,15 @@ class TranspiledJs {
     }
 
     get sourceMap() {
-        const sourceMap = this.transpiledJs.map.toUrl(),
+        let sourceMap,
+            sourceMapUrl;
+
+        if (this.codeOnly)
+            sourceMapUrl = '';
+        else {
+            sourceMap = this.transpiledJs.map.toUrl(),
             sourceMapUrl = sourceMap ? `//# sourceMappingURL=${sourceMap}` : '';
+        }
 
         return sourceMapUrl;
     } 

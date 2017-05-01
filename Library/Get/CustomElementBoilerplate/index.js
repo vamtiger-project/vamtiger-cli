@@ -8,9 +8,9 @@ const path = require('path'),
 
 class CustomElementBoilerplate extends BundleUi {
     constructor(configuration) {
-        super();
+        super(arguments);
 
-        this._configuration = configuration ? configuration : {};
+        this._configuration = arguments;
 
         this.html = null;
         this.title = null;

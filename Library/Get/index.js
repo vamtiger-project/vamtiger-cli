@@ -133,10 +133,10 @@ class Get {
         return componentName;
     }
 
-    static get polyfillSourceFiles() {
-        const polyfillSourceFiles = require('./PolyfillSourceFiles');
+    static get jsSourceFiles() {
+        const jsSourceFiles = require('./JsSourceFiles');
 
-        return polyfillSourceFiles;
+        return jsSourceFiles;
     }
 
     static get pathsWhichDontExist() {

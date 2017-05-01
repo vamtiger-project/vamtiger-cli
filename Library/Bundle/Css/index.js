@@ -3,8 +3,8 @@
 const TranspiledJs = require('../TranspiledJs').class;
 
 class BundleCss extends TranspiledJs {
-    constructor(filePath) {
-        super(filePath);
+    constructor(params) {
+        super(params);
 
         this.cssBundle = null;
     }

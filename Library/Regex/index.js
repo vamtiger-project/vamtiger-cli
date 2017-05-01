@@ -161,6 +161,18 @@ class Regex {
 
         return regex;
     }
+
+    static get word() {
+        const regex = require('./Word');
+
+        return regex;
+    }
+
+    static get mainSourceJsFile() {
+        const regex = require('./MainSourceJsFile');
+
+        return regex;
+    }
 };
 
 module.exports = Regex;

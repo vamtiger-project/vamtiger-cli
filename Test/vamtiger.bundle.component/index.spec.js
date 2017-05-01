@@ -13,7 +13,7 @@ const path = require('path'),
     defaultComponentMainFile = path.resolve(__dirname, 'ui-project/Source/Component/Main/Default/index.js');
 
 describe(`vamtiger.bundle.component should`, function () {
-    it.only('build the ui component for a defined input path', function (done) {
+    it('build the ui component for a defined input path', function (done) {
         const vamtiger = new Vamtiger();
         
         vamtiger.bundle.component({defaultComponentMainFile})

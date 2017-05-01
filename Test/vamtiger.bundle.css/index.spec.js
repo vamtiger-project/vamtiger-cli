@@ -10,19 +10,19 @@ const path = require('path'),
     
     Vamtiger = require('../../'),
 
-    cssPath = path.resolve(__dirname, 'MockData/index.css');
+    filePath = path.resolve(__dirname, 'MockData/index.css');
 
 describe(`vamtiger.bundle.css should`, function () {
     it('bundle all css for a defined input path', function (done) {
         const vamtiger = new Vamtiger(),
             bundledCssPath = path.resolve(
-                path.dirname(cssPath),
+                path.dirname(filePath),
                 'Bundled',
                 'index.css'
             );
         
-        vamtiger.get.readStream(cssPath)
-            .pipe(vamtiger.bundle.css(cssPath))
+        vamtiger.get.readStream(filePath)
+            .pipe(vamtiger.bundle.css({filePath}))
             .pipe(vamtiger.get.writeStream(bundledCssPath))
             .on('error', done)
             .on('finish', done);
@@ -31,13 +31,13 @@ describe(`vamtiger.bundle.css should`, function () {
     it('be compatible with gulp', function (done) {
         const vamtiger = new Vamtiger(),
             bundledCssPath = path.resolve(
-                path.dirname(cssPath),
+                path.dirname(filePath),
                 'Bundled'
             ),
             bundledCssFileName = 'index-gulp.css';
         
-        gulp.src(cssPath)
-            .pipe(vamtiger.bundle.css(cssPath))
+        gulp.src(filePath)
+            .pipe(vamtiger.bundle.css({filePath}))
             .pipe(rename(bundledCssFileName))
             .pipe(gulp.dest(bundledCssPath))
             .on('finish', done)

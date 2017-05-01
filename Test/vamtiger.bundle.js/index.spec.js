@@ -10,20 +10,20 @@ const path = require('path'),
     
     Vamtiger = require('../../'),
 
-    jsPath = path.resolve(__dirname, 'MockData/index.js');
+    filePath = path.resolve(__dirname, 'MockData/index.js');
 
 describe(`vamtiger.bundle.js should`, function () {
     it('bundle all javascript for a defined input path', function (done) {
         const vamtiger = new Vamtiger(),
             transpiledJsPath = path.resolve(
-                path.dirname(jsPath),
+                path.dirname(filePath),
                 'Bundled',
                 'index.js'
             ),
             expected = /^async function works$/;
         
-        vamtiger.get.readStream(jsPath)
-            .pipe(vamtiger.bundle.js(jsPath))
+        vamtiger.get.readStream(filePath)
+            .pipe(vamtiger.bundle.js({filePath}))
             .pipe(vamtiger.get.writeStream(transpiledJsPath))
             .on('error', done)
             .on('finish', testResult);
@@ -50,13 +50,13 @@ describe(`vamtiger.bundle.js should`, function () {
         const vamtiger = new Vamtiger(),
             transpiledJsFileName = 'index-gulp.js',
             transpiledJsPath = path.resolve(
-                path.dirname(jsPath),
+                path.dirname(filePath),
                 'Bundled'
             ),
             expected = /^async function works$/;
         
-        gulp.src(jsPath)
-            .pipe(vamtiger.bundle.js(jsPath))
+        gulp.src(filePath)
+            .pipe(vamtiger.bundle.js({filePath}))
             .pipe(rename(transpiledJsFileName))
             .pipe(gulp.dest(transpiledJsPath))
             .on('finish', testResult)
