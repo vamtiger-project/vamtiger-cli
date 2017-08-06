@@ -173,6 +173,12 @@ class Regex {
 
         return regex;
     }
+
+    static get pathToIgnore() {
+        const regex = require('./PathToIgnore');
+
+        return regex;
+    }
 };
 
 module.exports = Regex;

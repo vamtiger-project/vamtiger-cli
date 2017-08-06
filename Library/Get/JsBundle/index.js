@@ -1,6 +1,14 @@
 'use strict';
 
-const rollup = require('rollup').rollup;
+const path = require('path'),
+    
+    XRegExp = require('xregexp'),
+    rollup = require('rollup').rollup,
+    
+    VamtigerPath = path.resolve(__dirname, '../'.repeat(3)),
+    Vamtiger = require(VamtigerPath),
+
+    vamtiger = new Vamtiger();
 
 class JsBundle {
     constructor({filePath, legacy = false}) {
@@ -8,20 +16,28 @@ class JsBundle {
         this.legacy = legacy;
 
         this.bundle = '';
+
+        this.ignore = this._ignore;
     }
 
     main() {
         return new Promise((resolve, reject) => {
-            rollup(this._config)
-                .then(result => this.result = result.generate(this._config))
-                .then(() => this.bundle = this.result)
-                .then(() => resolve(this))
-                .catch(this._handleError);
+            const main = rollup(this._config)
+                    .then(result => this.result = result.generate(this._config))
+                    .then(() => this.bundle = this.result)
+                    .then(() => resolve(this))
+                    .catch(error => this._handleError({error, reject}));
         });
     }
 
-    _handleError(error) {
-        throw error;
+    _handleError(params) {
+        const error = params.error,
+            reject = params.reject;
+
+        if (reject)
+            reject(error);
+        else
+            throw error;
     }
 
     get _config() {
@@ -34,6 +50,12 @@ class JsBundle {
         };
 
         return config;
+    }
+
+    get _ignore() {
+        const ignore = XRegExp.match(this.filePath, vamtiger.regex.pathToIgnore);
+
+        return ignore;
     }
 
     get code() {
