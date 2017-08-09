@@ -31,6 +31,12 @@ class Vamtiger {
         return Bundle;
     }
 
+    get package() {
+        const Package = require('./Library/Package');
+
+        return Package;
+    }
+
     get source() {
         const source = this._configuration.source;
 

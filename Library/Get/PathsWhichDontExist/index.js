@@ -17,7 +17,7 @@ class PathsWhichDontExist {
         const absolutePath = this.absolutePath,
             main = this._setPathsWhichDontExist({absolutePath})
                 .then(() => this.pathsWhichDontExist)
-                .catch(this._handleError);
+                .catch(error => this._handleError(error));
 
         return main
     }
@@ -28,8 +28,9 @@ class PathsWhichDontExist {
             
             vamtiger.get.pathInfo(absolutePath)
                 .catch(() => this._addPathWhichDoesNotExist({pathWhichDoesntExist: absolutePath}))
-                .then(() => this._pathsWhichDontExist ? this._pathsWhichDontExist : new Set())
-                .then(resolve);
+                .then(() => this._pathsWhichDontExist ? null : this._pathsWhichDontExist = new Set())
+                .then(resolve)
+                .catch(error => this._handleError(error));
         });
     }
 
@@ -59,6 +60,9 @@ class PathsWhichDontExist {
     }
 
     _handleError(error) {
+        console.trace('Handle Error');
+        console.error(error.stack);
+        
         throw error;
     }
 }

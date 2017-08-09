@@ -41,7 +41,7 @@ class PathFolders {
         else
             foldersToCreate = vamtiger.get.pathsWhichDontExist({absolutePath: path.dirname(this.absolutePath)})
                 .then(pathsWhichDontExist => this._foldersToCreate = pathsWhichDontExist)
-                .catch(this._handleError);
+                .catch(error => this._handleError(error));
 
         return foldersToCreate;
     }
@@ -52,20 +52,23 @@ class PathFolders {
         );
 
         createPathFolders = createPathFolders
-            .catch(this._handleError);
+            .catch(error => this._handleError(error));
 
         return createPathFolders
     }
 
     _handleError(error) {
-        const throwError = !XRegExp.match(error.code, vamtiger.regex.error.code.EEXIST);
+        let throwError = true;
+        
+        if (error.code)
+            throwError = !XRegExp.match(error.code, vamtiger.regex.error.code.EEXIST);
         
         if (throwError)
             this._throwError(error);
     }
 
     _throwError(error) {
-        console.log(error);
+        console.log(error.stack);
 
         throw error;
     }
