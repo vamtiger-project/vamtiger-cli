@@ -14,6 +14,12 @@ class Regex {
         return regex;
     }
 
+    static get forwardSlash() {
+        const regex = /\//g;
+
+        return regex;
+    }
+
     static get htmlBody() {
         const regex = require('./HtmlBody');
 

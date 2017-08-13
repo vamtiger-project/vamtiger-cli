@@ -27,9 +27,6 @@ class PathInfo {
                     reject(error)
                 else {
                     pathInfo.stats = stats;
-
-                    if (!pathInfo.path)
-                        console
                     
                     resolve(pathInfo);
                 }

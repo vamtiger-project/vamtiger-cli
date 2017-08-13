@@ -12,18 +12,21 @@ const path = require('path'),
     args = new Args();
 
 class UiLibrary {
-    constructor({projectPath}) {
+    constructor({projectPath, returnData}) {
         this.projectPath = projectPath;
-        this.cssPath = this._cssPath;
+        this.returnData = returnData;
 
+        this.cssPath = this._cssPath;
         this._polyfillSourceFiles = null;
         this._jsSourceFiles = new Set();
+        this.jsSourceFileParams = undefined;
     }
 
     get main() {
         const main = Promise.resolve()
             .then(() => this._referenceJsSource)
             .then(() => this._bundleUiLibrary)
+            .then(() => this.returnData ? this._returnData : null)
             .catch(this._handleError);
         
         return main;
@@ -193,10 +196,20 @@ class UiLibrary {
             jsSourceFileParams.map(vamtiger.bundle.js)
         );
 
+        this.jsSourceFileParams = jsSourceFileParams;
+
         bundleJsSourceFiles = bundleJsSourceFiles
             .catch(this._handleError);
 
         return bundleJsSourceFiles;
+    }
+    
+    get _returnData() {
+        const data = {
+            jsSourceFileParams: this.jsSourceFileParams
+        };
+
+        return data;
     }
 
     _handleError(error) {

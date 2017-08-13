@@ -17,5 +17,6 @@
     "vamtiger.bundle.prefixedUiCss",
     "vamtiger.bundle.uiOnly",
     "vamtiger.initialize.uiProject",
-    "vamtiger.bundle.component"
+    "vamtiger.bundle.component",
+    "vamtiger.get.jsSouceFolders"
 ]

@@ -14,22 +14,33 @@ const path = require('path'),
 class UiLibrary {
     constructor({projectPath}) {
         this.projectPath = projectPath;
+
+        this.bundleData = undefined;
+        this.out
     }
 
     get main() {
         const packageParams = {
-                projectPath: this.projectPath
+                projectPath: this.projectPath,
+                returnData: true
             },
             main = Promise.resolve()
                 .then(() => vamtiger.bundle.uiLibrary(packageParams))
-                .then(() => this._package)
+                .then(bundleData => this.bundleData = bundleData)
+                .then(() => this._packageUiLibrary)
                 .catch(this._handleError);
         
         return main;
     }
 
-    get _package() {
-        console.log('package')
+    get _packageUiLibrary() {
+        const packageUiLibrary = vamtiger.get.jsSouceFolders()
+            .then(jsSouceFolders => {
+                console
+            })
+            .catch(error => handleError(error));
+
+        return packageUiLibrary;
     }
 
     _handleError(error) {

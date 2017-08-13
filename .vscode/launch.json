@@ -7,7 +7,8 @@
         {
 			"name": "Unit Test",
             "request": "launch",
-			"type": "node",
+            "type": "node",
+            "runtimeExecutable": "/Users/vamtiger/.nvm/versions/node/v7.10.1/bin/node",
             "runtimeArgs": [
                 "--harmony-async-await",
                 "${workspaceRoot}/Test"

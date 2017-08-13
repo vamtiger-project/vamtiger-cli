@@ -6,31 +6,38 @@ const path = require('path'),
     XRegExp = require('xregexp'),
     
     VamtigerPath = path.resolve(__dirname, '../'.repeat(3)),
-    Vamtiger = require(VamtigerPath);
+    Vamtiger = require(VamtigerPath),
+
+    vamtiger = new Vamtiger();
 
 class FolderContent extends Vamtiger {
-    constructor({absolutePath, recursive, grouped}) {
+    constructor({absolutePath, recursive, grouped, depth}) {
         super();
         
         this.absolutePath = absolutePath;
-        this.recursive = recursive;
         this.grouped = grouped;
+        this.depth = depth;
+        this.recursive = this.recursive;
         
         this.folderContent = [];
+        this.absolutePathRegex = XRegExp(this.absolutePath);
     }
     
     main() {
-        let main = this.recursive ? this._recursivelyGetFolderContent(this.absolutePath) : this._getFolderContent(this.absolutePath);
+        let main;
+        
+        if (this.recursive)
+            main = this._recursivelyGetFolderContent(this.absolutePath);
+        else if (this.depth)
+            main = this._getFolderContentForDepth(this.absolutePath);
+        else
+            main = this._getFolderContent(this.absolutePath);
 
         main = main
             .then(() => this.grouped ? this.groupedFolderContent : this.folderContent)
             .catch(this._handleError);
 
         return main;
-    }
-
-    _handleError(error) {
-        throw error;
     }
 
     _getFolderContent(absolutePath) {
@@ -41,13 +48,16 @@ class FolderContent extends Vamtiger {
                 if (error)
                     done = () => reject(error);
                 else if (this.recursive) {
-                    folderContent = folderContent.map(folder => path.resolve(absolutePath, folder));
+                    folderContent = folderContent
+                        .filter(folder => !XRegExp.match(folder, vamtiger.regex.pathToIgnore))
+                        .map(folder => path.resolve(absolutePath, folder));
 
                     done = () => resolve(folderContent);
                 } else {
-                    this.folderContent = folderContent;
+                    this.folderContent = folderContent
+                        .filter(folder => !XRegExp.match(folder, vamtiger.regex.pathToIgnore));
                     
-                    done = () => resolve(folderContent);
+                    done = () => resolve(this.folderContent);
                 }
 
                 done();
@@ -55,7 +65,37 @@ class FolderContent extends Vamtiger {
         });
     }
 
+    _getFolderContentForDepth() {
+        const folderContent = new Set();
+
+        let absolutePaths = [this.absolutePath],
+            currentDepth = 0,
+            getFolderContentForDepth = Promise.resolve(),
+            currentFolderContents,
+            folderContents,
+            parentPaths;
+
+        for (currentDepth; currentDepth < this.depth; currentDepth++) {
+            getFolderContentForDepth = getFolderContentForDepth
+                .then(() => Promise.all(absolutePaths.map(absolutePath => this._getFolderContent(absolutePath))))
+                .then(results => currentFolderContents = results)
+                .then(() => parentPaths = !folderContent.size ? [this.absolutePath] : Array.from(folderContent).slice(folderContent.size - currentFolderContents.length))
+                .then(() => currentFolderContents.map((entries, index) => entries.map(entry => path.join(parentPaths[index], entry))))
+                .then(currentFolderContents => currentFolderContents.reduce((entries, currentEntries) => entries.concat(currentEntries)))
+                .then(currentFolderContents => folderContents = currentFolderContents)
+                .then(() => folderContents.forEach(entry => folderContent.add(entry)))
+                .then(() => absolutePaths = folderContents);
+        }
+
+        getFolderContentForDepth = getFolderContentForDepth
+            .then(() => this.folderContent = Array.from(folderContent));
+        
+        return getFolderContentForDepth;
+    }
+
     _recursivelyGetFolderContent(absolutePath) {
+        let folderContent;
+        
         const recursivelyGetFolderContent = this._getFolderContent(absolutePath)
             .then(folderContent => this._getFolderContentInfo(folderContent))
             .then(folderContentInfo => this._getClassifiedFolderContent(folderContentInfo, absolutePath))
@@ -143,6 +183,12 @@ class FolderContent extends Vamtiger {
             done = true;
 
         return done;
+    }
+
+    _handleError(error) {
+        console.trace(error.message);
+
+        throw error;
     }
 }
 

@@ -13,7 +13,9 @@
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
     "gulp-util": "^3.0.7",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "proxyquire": "^1.8.0",
+    "sinon": "^3.2.0"
   },
   "dependencies": {
     "@webcomponents/custom-elements": "https://github.com/webcomponents/custom-elements.git",
