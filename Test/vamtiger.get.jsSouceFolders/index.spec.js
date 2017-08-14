@@ -25,7 +25,7 @@ const path = require('path'),
     );
 
 describe(`vamtiger.get.jsSouceFolders should`, function () {
-    it('return an array of javascript source paths', function () {
+    it('return an array of javascript source folder paths', function () {
         let jsSouceFolders,
             allFoldersPresent;
 

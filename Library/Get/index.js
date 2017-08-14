@@ -145,6 +145,12 @@ class Get {
         return jsSouceFolders;
     };
 
+    static get jsSourceEntryPaths() {
+        const jsSourceEntryPaths = require('./JsSourceEntryPaths');
+
+        return jsSourceEntryPaths;
+    }
+
     static get pathsWhichDontExist() {
         const pathsWhichDontExist = require('./PathsWhichDontExist');
 

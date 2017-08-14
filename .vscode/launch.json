@@ -8,10 +8,9 @@
 			"name": "Unit Test",
             "request": "launch",
             "type": "node",
-            "runtimeExecutable": "/Users/vamtiger/.nvm/versions/node/v7.10.1/bin/node",
+            "runtimeExecutable": "${workspaceRoot}/node_modules/mocha/bin/mocha",
             "runtimeArgs": [
-                "--harmony-async-await",
-                "${workspaceRoot}/Test"
+                "test/**/*.spec.js"
             ],
 			"stopOnEntry": false,
 			"cwd": "${workspaceRoot}"

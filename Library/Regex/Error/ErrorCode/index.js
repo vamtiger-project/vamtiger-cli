@@ -33,6 +33,19 @@ class ErrorCode {
 
         return regex;
     }
+
+    static get ENOTDIR() {
+        const pattern = 'ENOTDIR',
+            flags = 'i',
+            explicit = true,
+            regex = vamtiger.get.regex({
+                pattern,
+                flags,
+                explicit
+            });
+
+        return regex;
+    }
 };
 
 module.exports = ErrorCode;

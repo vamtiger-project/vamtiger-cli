@@ -6,7 +6,7 @@
   "author": "James-Alex Matthews IV",
   "license": "MIT",
   "scripts": {
-    "test": "node Test"
+    "test": "mocha test/**/*.spec.js"
   },
   "devDependencies": {
     "chai": "^3.5.0",
